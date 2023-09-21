@@ -32,6 +32,9 @@ public class PrubaConsultasJPQL {
 
         //consultar por nombre de categoria
         productoDAO.consultarPorNombreDeCategoria("Celulares").forEach(p -> System.out.println(p.getNombre()+ " " + p.getDescripcion()));
+
+        //consultar precio por nombre de producto
+        System.out.println(productoDAO.consultarPrecioPorNombreProducto("Samsung Note 8"));
     }
 
     private static void guardarProducto(String nombre, String descripcion){
