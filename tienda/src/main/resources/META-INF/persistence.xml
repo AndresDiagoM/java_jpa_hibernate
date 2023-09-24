@@ -14,9 +14,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <!-- <class>com.alura.modelo.Produto</class>--> <!--opcional, sin la etiqueta class, jpa mapea todas las entidades-->
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:tienda"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda_bd"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.password" value="1234"/>
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

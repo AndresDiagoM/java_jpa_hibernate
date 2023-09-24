@@ -31,22 +31,27 @@ public class Pedido {
     private Cliente cliente;
     // un pedido tiene un cliente y un cliente tiene muchos pedidos
 
-    @OneToMany(mappedBy="pedido", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="pedido", cascade=CascadeType.ALL)  // hay que indicar que esta conectado al atributo pedido de la clase ItemsPedido
     private List<ItemsPedido> items=new ArrayList<>();
     // un pedido tiene muchos items o productos
 
     //----------- Constructores -----------
-    public void agregarItems(ItemsPedido item) {
-        item.setPedido(this);
-        this.items.add(item);
-    }
-
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
     }
     public Pedido() {}
 
-    //getters / setters
+    //----------- Métodos -----------
+    /**
+     * Añade un item a la lista de items del pedido
+     * @param item
+     */
+    public void agregarItems(ItemsPedido item) {
+        item.setPedido(this);
+        this.items.add(item);
+    }
+
+    //-------------------- Getters y Setters --------------------
 
     public Long getId() {
         return id;

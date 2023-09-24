@@ -14,6 +14,8 @@ public class LoadApp {
 
         Cliente andres = new Cliente("Andres", "123456789");
         
+        Pedido  pedido = new Pedido();
+        
         Producto celular = new Producto();
         Categoria celulares = new Categoria("Celulares");
         celular.setNombre("XIAOMI X10");
@@ -21,7 +23,6 @@ public class LoadApp {
         celular.setPrecio(2000000);
         celular.setCategoria(celulares);
         
-        Pedido  pedido = new Pedido();
         
         
         

@@ -1,9 +1,14 @@
 package com.alura.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +22,9 @@ public class Cliente {
     private String nombre;
     private String dni;
 
+    @OneToMany(mappedBy="cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
+
     //----------- Constructores -----------
     public Cliente() {}
 
@@ -25,7 +33,13 @@ public class Cliente {
         this.dni=dni;
     }
 
-    //getters / setters
+    //----------- Métodos -----------
+    public void agregarPedido(Pedido pedido) {
+        pedido.setCliente(this);
+        this.pedidos.add(pedido);
+    }
+
+    //-------------------- Getters y Setters --------------------
 
     public Long getId() {
         return id;
