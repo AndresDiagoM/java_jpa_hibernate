@@ -1,1 +1,11 @@
-C:\xampp\htdocs\Oracle\JAVA\tienda\src\main\java\com\alura\tienda\Tienda.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\modelo\ItemsPedido.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\utils\JPAUtils.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\modelo\Categoria.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\modelo\Producto.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\prueba\RegistroProducto.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\DAO\CategoriaDAO.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\prueba\PrubaConsultasJPQL.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\modelo\Cliente.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\modelo\Pedido.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\DAO\ProductoDAO.java
+C:\xampp\htdocs\Oracle\JAVA\Spring Boot\3JPA\tienda\src\main\java\com\alura\tienda\Tienda.java
