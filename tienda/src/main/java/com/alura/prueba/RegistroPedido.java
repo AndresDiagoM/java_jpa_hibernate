@@ -18,6 +18,7 @@ public class RegistroPedido {
         ProductoDAO productoDAO = new ProductoDAO(em);
         Producto celular = productoDAO.consultarPorId(1l);
 
+        ClienteDAO clienteDAO = new ClienteDAO(em);
         PedidoDAO pedidoDAO = new PedidoDAO(em);
 
 
@@ -25,6 +26,7 @@ public class RegistroPedido {
         pedido.agregarItems(new ItemsPedido(5, celular, pedido));
 
         em.getTransaction().begin();
+        clienteDAO.guardar(andres);
         pedidoDAO.guardar(pedido);
         em.getTransaction().commit();
     }

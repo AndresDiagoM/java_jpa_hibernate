@@ -38,6 +38,7 @@ public class Pedido {
     //----------- Constructores -----------
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
+        this.valorTotal=0.0;
     }
     public Pedido() {}
 
@@ -49,6 +50,7 @@ public class Pedido {
     public void agregarItems(ItemsPedido item) {
         item.setPedido(this);
         this.items.add(item);
+        this.valorTotal += (item.getValor());
     }
 
     //-------------------- Getters y Setters --------------------

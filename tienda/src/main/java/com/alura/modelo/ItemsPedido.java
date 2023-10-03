@@ -38,6 +38,11 @@ public class ItemsPedido {
         this.precioUnitario=producto.getPrecio();
     }
 
+    //----------- Métodos -----------
+    public Double getValor() {
+        return precioUnitario*cantidad;
+    }
+
     //getters / setters
 
     public Long getId() {
