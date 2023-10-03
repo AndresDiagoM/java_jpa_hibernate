@@ -32,6 +32,7 @@ public class Pedido {
     // un pedido tiene un cliente y un cliente tiene muchos pedidos
 
     @OneToMany(mappedBy="pedido", cascade=CascadeType.ALL)  // hay que indicar que esta conectado al atributo pedido de la clase ItemsPedido
+    // cascade=CascadeType.ALL indica que si se borra un pedido se borran todos los items asociados a ese pedido
     private List<ItemsPedido> items=new ArrayList<>();
     // un pedido tiene muchos items o productos
 

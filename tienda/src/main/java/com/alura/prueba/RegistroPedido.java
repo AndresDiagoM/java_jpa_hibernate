@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import com.alura.DAO.*;
 import com.alura.modelo.*;
 import com.alura.utils.JPAUtils;
+import java.util.List;
 
 public class RegistroPedido {
 
@@ -29,6 +30,18 @@ public class RegistroPedido {
         clienteDAO.guardar(andres);
         pedidoDAO.guardar(pedido);
         em.getTransaction().commit();
+
+        Double valorTotal = pedidoDAO.valorTotalVendido();
+        System.out.println("El valor total vendido es: " + valorTotal);
+
+        //MOSTRAR EL RELATORIO DE VENTAS
+        List<Object[]> relatorioVentas = pedidoDAO.relatorioVentas();
+
+        for (Object[] obj : relatorioVentas) {
+            System.out.println("\n Nombre del producto: " + obj[0] + "\n"
+                        + " Cantidad vendida: " + obj[1] + "\n"
+                        + " Fecha ultima venta: " + obj[2]);
+        }
     }
     
 
@@ -37,7 +50,7 @@ public class RegistroPedido {
         Categoria celulares = new Categoria("Celulares");
         celular.setNombre(nombre);
         celular.setDescripcion(descripcion);
-        celular.setPrecio(2000000);
+        celular.setPrecio(20);
         celular.setCategoria(celulares);
 
         EntityManager em = JPAUtils.getEntityManager();

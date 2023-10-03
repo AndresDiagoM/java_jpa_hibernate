@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import com.alura.modelo.Pedido;
-import com.alura.modelo.Producto;
 
 public class PedidoDAO {
     
@@ -41,6 +40,23 @@ public class PedidoDAO {
     public Double consultarPrecioPorNombrePedido(String nombre){
         String jpql = "SELECT p.precio FROM Pedido p WHERE p.nombre = :nombre"; // Consulta JPQL
         return em.createQuery(jpql, Double.class).setParameter("nombre", nombre).getSingleResult(); 
+    }
+
+    public Double valorTotalVendido(){
+        String jpql = "SELECT SUM(p.valorTotal) FROM Pedido p"; // Consulta JPQL
+        return em.createQuery(jpql, Double.class).getSingleResult(); 
+    }
+
+    public List<Object[]> relatorioVentas(){
+        // consultar nombre producto, cantidad vendida, fecha ultima venta
+        String jpql = "SELECT producto.nombre,"+
+                "SUM(item.cantidad),"+
+                "MAX(pedido.fecha) FROM Pedido pedido "+
+                "JOIN pedido.items item "+
+                "JOIN item.producto producto "+
+                "GROUP BY producto.nombre "+
+                "ORDER BY item.cantidad DESC"; // Consulta JPQL
+        return em.createQuery(jpql, Object[].class).getResultList(); 
     }
 
 
