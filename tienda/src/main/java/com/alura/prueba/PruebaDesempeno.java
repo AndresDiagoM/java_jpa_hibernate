@@ -7,6 +7,7 @@ import com.alura.modelo.*;
 import com.alura.utils.JPAUtils;
 import com.alura.vo.RelatorioDeVenta;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class PruebaDesempeno {
@@ -36,10 +37,17 @@ public class PruebaDesempeno {
         
         Pedido pedido2 = em.find(Pedido.class, 1l);
         
-        em.close();
+        //em.close();
         // em.find no trae el pedio y el cliente, solo el pedido, por esto el error en sout
 
         System.out.println(pedido2.getCliente().getNombre());
+
+
+        // consultar por parametro de pedido dao
+        LocalDate   fechaInicio = LocalDate.of(2020, 1, 1);
+        List<Producto> productos = pedidoDAO.consultarPorParametros("Andres", 0.0, null);
+
+        productos.forEach(System.out::println);
     }
 
     private static void guardarProducto(String nombre, String descripcion){

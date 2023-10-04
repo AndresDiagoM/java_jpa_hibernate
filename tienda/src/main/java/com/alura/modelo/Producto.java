@@ -47,6 +47,11 @@ public class Producto {
     }
 
     //-------------------- Métodos --------------------
+    @Override
+    public String toString() {
+        return "Producto [categoria=" + categoria + ", descripcion=" + descripcion + ", fechaDeRegistro="
+                + fechaDeRegistro + ", id=" + id + ", nombre=" + nombre + ", precio=" + precio + "]";
+    }
 
     //-------------------- Getters y Setters --------------------
 
