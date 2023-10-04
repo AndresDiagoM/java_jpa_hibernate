@@ -33,8 +33,11 @@ public class PruebaDesempeno {
         clienteDAO.guardar(andres);
         pedidoDAO.guardar(pedido);
         em.getTransaction().commit();
-
+        
         Pedido pedido2 = em.find(Pedido.class, 1l);
+        
+        em.close();
+        // em.find no trae el pedio y el cliente, solo el pedido, por esto el error en sout
 
         System.out.println(pedido2.getCliente().getNombre());
     }

@@ -60,6 +60,12 @@ public class PedidoDAO {
         return em.createQuery(jpql, RelatorioDeVenta.class).getResultList(); 
     }
 
+    public Pedido consultarPedidoConCliente(Long id){
+        String jpql = "SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id = :id"; // Consulta JPQL
+        return em.createQuery(jpql, Pedido.class).setParameter("id", id).getSingleResult(); 
+    }
+    // como cliente es tipo lazy , se debe hacer un join fetch para que se cargue el cliente
+
 
     //-------------------- Getters y Setters --------------------
 }
