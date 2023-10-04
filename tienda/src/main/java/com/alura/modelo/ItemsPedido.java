@@ -2,6 +2,7 @@ package com.alura.modelo;
 
 import java.math.BigDecimal;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,11 +21,11 @@ public class ItemsPedido {
     private int cantidad;
     private Double precioUnitario;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Producto producto;
     // un item de pedido tiene un producto y un producto puede estar en muchos items de pedido
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Pedido pedido;
     // un item de pedido tiene un pedido y un pedido tiene muchos items de pedido
 

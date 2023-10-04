@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class Producto {
     private double precio;
     private LocalDate fechaDeRegistro = LocalDate.now();   
     @Enumerated(EnumType.STRING) // Guarda el nombre String del enum en la base de datos, y no como un numero
-    @ManyToOne // Muchos productos pueden tener una misma categoría
+    @ManyToOne(fetch = FetchType.LAZY) // Muchos productos pueden tener una misma categoría
     private Categoria categoria;
 
     //-------------------- Constructores --------------------

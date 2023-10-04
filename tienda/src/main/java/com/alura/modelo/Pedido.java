@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class Pedido {
     @Column(name="valor_total")
     private Double valorTotal;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //evitar que las consultas sean eager
     private Cliente cliente;
     // un pedido tiene un cliente y un cliente tiene muchos pedidos
 
