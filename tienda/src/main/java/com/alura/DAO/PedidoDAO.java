@@ -6,10 +6,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import com.alura.modelo.Pedido;
 import com.alura.modelo.Producto;
 import com.alura.vo.RelatorioDeVenta;
+import javax.persistence.criteria.Predicate;
 
 public class PedidoDAO {
     
@@ -96,6 +100,25 @@ public class PedidoDAO {
         }
         
         return query.getResultList();        
+    }
+
+    public List<Producto> consultarPorParametrosConAPICriteria(String nombre, BigDecimal precio,LocalDate fecha){
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<Producto> query = builder.createQuery(Producto.class);
+        Root<Producto> from = query.from(Producto.class);
+
+        Predicate filtro = builder.and();
+        if(nombre!=null && !nombre.trim().isEmpty()) {
+            filtro=builder.and(filtro,builder.equal(from.get("nombre"), nombre));
+        }
+        if(precio!=null && !precio.equals(0)) {
+            filtro=builder.and(filtro,builder.equal(from.get("precio"), precio));
+        }
+        if(fecha!=null) {
+            filtro=builder.and(filtro,builder.equal(from.get("fechaDeRegistro"), fecha));
+        }
+        query=query.where(filtro);
+        return em.createQuery(query).getResultList();
     }
 
 
