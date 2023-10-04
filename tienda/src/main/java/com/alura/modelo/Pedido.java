@@ -33,6 +33,8 @@ public class Pedido {
 
     @OneToMany(mappedBy="pedido", cascade=CascadeType.ALL)  // hay que indicar que esta conectado al atributo pedido de la clase ItemsPedido
     // cascade=CascadeType.ALL indica que si se borra un pedido se borran todos los items asociados a ese pedido
+    //toMany es de tipo lazy por defecto, es decir que no carga los items hasta que se los pida
+    //cuando es eager (toOne) carga todos los items de una vez
     private List<ItemsPedido> items=new ArrayList<>();
     // un pedido tiene muchos items o productos
 

@@ -9,9 +9,10 @@ import com.alura.vo.RelatorioDeVenta;
 
 import java.util.List;
 
-public class RegistroPedido {
-
+public class PruebaDesempeno {
+    
     public static void main(String[] args) {
+
         Cliente andres = new Cliente("Andres", "123456789");
         
         guardarProducto("Xiaomi Redmi Note 8", "Celular de gama media");
@@ -33,15 +34,10 @@ public class RegistroPedido {
         pedidoDAO.guardar(pedido);
         em.getTransaction().commit();
 
-        Double valorTotal = pedidoDAO.valorTotalVendido();
-        System.out.println("El valor total vendido es: " + valorTotal);
+        Pedido pedido2 = em.find(Pedido.class, 1l);
 
-        //MOSTRAR EL RELATORIO DE VENTAS
-        List<RelatorioDeVenta> relatorioVentas = pedidoDAO.relatorioVentasVO();
-
-        relatorioVentas.forEach(System.out::println);
+        System.out.println(pedido2.getCliente().getNombre());
     }
-    
 
     private static void guardarProducto(String nombre, String descripcion){
         Producto celular = new Producto();

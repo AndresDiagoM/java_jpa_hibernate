@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import com.alura.modelo.Pedido;
+import com.alura.vo.RelatorioDeVenta;
 
 public class PedidoDAO {
     
@@ -47,16 +48,16 @@ public class PedidoDAO {
         return em.createQuery(jpql, Double.class).getSingleResult(); 
     }
 
-    public List<Object[]> relatorioVentas(){
+    public List<RelatorioDeVenta> relatorioVentasVO(){
         // consultar nombre producto, cantidad vendida, fecha ultima venta
-        String jpql = "SELECT producto.nombre,"+
+        String jpql = "SELECT new com.alura.vo.RelatorioDeVenta( producto.nombre,"+
                 "SUM(item.cantidad),"+
-                "MAX(pedido.fecha) FROM Pedido pedido "+
+                "MAX(pedido.fecha)) FROM Pedido pedido "+
                 "JOIN pedido.items item "+
                 "JOIN item.producto producto "+
                 "GROUP BY producto.nombre "+
                 "ORDER BY item.cantidad DESC"; // Consulta JPQL
-        return em.createQuery(jpql, Object[].class).getResultList(); 
+        return em.createQuery(jpql, RelatorioDeVenta.class).getResultList(); 
     }
 
 

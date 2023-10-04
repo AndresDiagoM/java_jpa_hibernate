@@ -40,8 +40,7 @@ public class ProductoDAO {
     }
 
     public Double consultarPrecioPorNombreProducto(String nombre){
-        String jpql = "SELECT p.precio FROM Producto p WHERE p.nombre = :nombre"; // Consulta JPQL
-        return em.createQuery(jpql, Double.class).setParameter("nombre", nombre).getSingleResult(); // Ejecuta la consulta
+        return em.createNamedQuery("Producto.consultaDePrecio", Double.class).setParameter("nombre", nombre).getSingleResult(); // Ejecuta la consulta
     }
 
     //-------------------- Getters y Setters --------------------
